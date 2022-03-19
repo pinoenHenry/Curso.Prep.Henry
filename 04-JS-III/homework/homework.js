@@ -230,8 +230,8 @@ function continueStatement(numero) {
   var i = 0;
   while(i < 10){
     i++;
+    if(i === 5) continue;
     total += 2;
-    if(i === 10) continue;
     arreglo.push(total);
   }
   return arreglo;
