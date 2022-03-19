@@ -89,11 +89,7 @@ function promedioResultadosTest(resultadosTest) {
   // "resultadosTest" debe ser una matriz de enteros (int/integers)
   // Itera (en un bucle) los elementos del array, calcula y devuelve el promedio de puntajes
   // Tu código:
-  var total = 0;
-  for(var i=0; i<resultadosTest.length; i++){
-    total += resultadosTest[i];
-  }
-  return total/resultadosTest.length;
+  return agregarNumeros(resultadosTest) / resultadosTest.length;
 }
 
 
@@ -101,7 +97,13 @@ function numeroMasGrande(numeros) {
   // "numeros" debe ser una matriz de enteros (int/integers)
   // Devuelve el número más grande
   // Tu código:
-  return Math.max(...numeros);
+  var mayor = numeros[0];
+  for(var i=1; i<numeros.length; i++){
+    if(mayor < numeros[i]){
+      mayor = numeros[i];
+    }
+  }
+  return mayor;
 }
 
 
@@ -122,13 +124,13 @@ function multiplicarArgumentos() {
 function cuentoElementos(arreglo){
   //Realiza una función que retorne la cantidad de los elementos del arreglo cuyo valor es mayor a 18.
   //Escribe tu código aquí
-  var adultos = [];
+  var contador = 0;
   for(var i=0; i<arreglo.length; i++){
     if(arreglo[i] > 18){
-      adultos.push(arreglo[i]);
+      contador++;
     }
   }
-  return adultos.length;
+  return contador;
 }
 
 
@@ -155,7 +157,13 @@ function todosIguales(arreglo) {
   //Escriba la función todosIguales, que indique si todos los elementos de un arreglo son iguales:
   //retornar true, caso contrario retornar false.
   //Escribe tu código aquí
-  return arreglo.every(elemento => arreglo[0] === elemento);
+  var aux = arreglo[0];
+  for(var i=1; i<arreglo.length; i++){
+    if(aux !== arreglo[i]){
+      return false;
+    }
+  }
+  return true;
 } 
 
 
@@ -171,7 +179,7 @@ function mesesDelAño(array) {
     }
   }
   if(meses.length === 3) return meses;
-  else return 'No se encontraron los meses pedidos';
+  return 'No se encontraron los meses pedidos';
 }
 
 
@@ -203,9 +211,7 @@ function breakStatement(numero) {
   while(i < 10){
     i++;
     suma += 2;
-    if(suma === i) {
-      return "Se interrumpió la ejecución";
-    }
+    if(suma === i) return "Se interrumpió la ejecución";
     arr.push(suma);
   }
   return arr;
