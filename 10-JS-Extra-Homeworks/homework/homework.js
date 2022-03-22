@@ -23,12 +23,11 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
-  var aux = string.split('');
   var resultado = {};
-  aux.forEach(function(letra){
-    if(letra in resultado) return resultado[letra]++;
-    return resultado[letra] = 1;
-  })
+  for(var i=0; i<string.length; i++){
+    if(resultado.hasOwnProperty(string[i])) resultado[string[i]]++;
+    else resultado[string[i]] = 1;
+  }
   return resultado;
 }
 
@@ -40,9 +39,9 @@ function capToFront(s) {
   //Escribe tu código aquí
   var mayusculas = '';
   var minusculas = '';
-  for(let letra of s){
-    if(letra === letra.toUpperCase()) mayusculas += letra;
-    else minusculas += letra;
+  for(let i=0; i<s.length; i++){
+    if(s[i] === s[i].toUpperCase()) mayusculas += s[i];
+    else minusculas += s[i];
   }
   return mayusculas + minusculas;
 }
@@ -75,8 +74,8 @@ function deleteAbc(cadena){
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
   var aux = '';
-  for(let letra of cadena){
-    if(letra !== 'a' && letra !== 'b' && letra !== 'c') aux += letra;
+  for(let i=0; i<cadena.length; i++){
+    if(cadena[i] !== 'a' && cadena[i] !== 'b' && cadena[i] !== 'c') aux += cadena[i];
   }
   return aux;
 }
@@ -86,7 +85,19 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
-  return arr.sort((a, b) => a.length - b.length);
+  var cambio = true;
+  while(cambio){
+    cambio = false;
+    for(let i=0; i<arr.length-1; i++){
+      if(arr[i].length > arr[i+1].length){
+        let aux = arr[i];
+        arr[i] = arr[i+1];
+        arr[i+1] = aux;
+        cambio = true;
+      }
+    }
+  }
+  return arr;
 }
 
 
@@ -97,9 +108,9 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
   var newArr = [];
-  for(let n of arreglo1){
-    for(let num of arreglo2){
-      if(n === num) newArr.push(num);
+  for(let i=0; arreglo1.length; i++){
+    for(let j=0; j<arreglo2.length; j++){
+      if(arreglo1[i] === arreglo2[j]) newArr.push(arreglo1[i]);
     }
   }
   return newArr;
