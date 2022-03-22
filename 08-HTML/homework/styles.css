@@ -1,0 +1,22 @@
+
+		h1{
+			color:  indianred;
+		}
+		img{
+			width: 400px;
+			padding: 25px;
+		}
+		#thirdDiv{
+			height: 600px;
+			width: 500px;
+			background-color: lightgoldenrodyellow;
+			margin: 10px;
+			padding: 30px;
+			border: 5px dashed greenyellow;
+		}
+		#spanId{
+			font-size: 18px;
+			margin: 50px;
+			padding-bottom: 20px;
+		}
+	
